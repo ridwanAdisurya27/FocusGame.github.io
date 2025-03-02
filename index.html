@@ -14,7 +14,9 @@
 </head>
 
 <body>
-    <h3> Focus Game </h3>
+    <div class="title">
+        <img src="./Asset/Images/Untitled design.png" alt="Focus Game" class="title-image">
+    </div>
     <div class="main-container">
         <aside class="left">
             <!-- Score Section -->
@@ -23,16 +25,20 @@
                 <p> 999 </p>
             </div>
             <!-- High Score Button -->
-            <button class="high-score-btn"> HIGH SCORE</button>
-            <button class="settings-btn"> Settings </button>
+            <div class="control-section">
+                <button class="btn" id="highscore"> HIGH SCORE</button>
+                <button class="btn" id="settings"> Settings </button>
+            </div>
         </aside>
         <main>
             <div class="timer-container">
                 <h3> 30 </h3>
-                <span></span>
+                <span class="outer">
+                    <span class="timer"></span>
+                </span>
             </div>
             <div class="game-grid-container">
-                <i class="fa-brands fa-github-square"></i>
+                <div>1</div>
                 <div>2</div>
                 <div>3</div>
                 <div>4</div>
@@ -49,7 +55,7 @@
                 <p> 9 </p>
             </div>
             <div class="social-container">
-                <img src="./Asset/My Logo .png">
+                <img src="./Asset/Images/My Logo .png">
                 <ul>
                     <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
