@@ -36,7 +36,6 @@ body {
     background-color: pink;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    border-right: solid 3px white;
     padding: 15px;
 }
 
@@ -65,7 +64,7 @@ body {
     background-color: orange;
     border-radius: 25px;
     outline: none;
-    border: solid white 1px;
+    border: solid white 5px;
     width: fit-content;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
@@ -83,27 +82,100 @@ main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    border-right: solid 3px white;
+    border-left: solid 3px white;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+main .timer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .timer-container h3 {
+    text-align: center;
+    font-size: 30px;
+    -webkit-text-stroke-color: #ddd;
+    -webkit-text-stroke-width: 1px;
 }
 
 main .timer-container .outer{
-    width: 100%;
+    width: 70%;
     background-color: black;
-    border: white;
+    border: solid 3px white;
     border-radius: 20px;
     height: 10px;
+    display: block;
 }
 
-main .game-gird-container {
+.timer-container .timer {
+    width: 100%;
+    height: inherit;
+    background-color: green;
+    display: block;
+    border-radius: 15px;
+}
+
+main .game-grid-container {
     display: grid;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3,100px);
+    grid-template-rows: repeat(3,100px);
+    gap: 5px;
+}
+
+.game-grid-container .grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 /* Aside Right Style */
 .right {
     background-color: peru;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    padding: 15px;
 }
 
+
 /* Social Media Style */
+.social-container {
+    align-self: flex-end;
+    justify-self: center;
+}
+
+.social-container img:nth-child(1) {
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes roll-up {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes roll-down {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-720deg);
+    }
+}
+
+
 .social-container ul {
     position: relative;
     top: 50%;
