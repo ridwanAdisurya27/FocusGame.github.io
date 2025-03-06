@@ -100,8 +100,6 @@ main .timer-container {
 main .timer-container h3 {
     text-align: center;
     font-size: 30px;
-    -webkit-text-stroke-color: #ddd;
-    -webkit-text-stroke-width: 1px;
 }
 
 main .timer-container .outer{
