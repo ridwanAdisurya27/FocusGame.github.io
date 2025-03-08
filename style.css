@@ -133,6 +133,45 @@ main .game-grid-container {
     background-color: white;
     font-size: 20px;
     border-radius: 10px;
+    transform: scale(1);
+}
+
+@keyframes pulse-right {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgb(33, 253, 33);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgb(33, 253, 33);
+        background-color: lime;
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgb(33, 253, 33);
+        background-color: white;
+    }
+}
+
+@keyframes pulse-false {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgb(253, 33, 33);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgb(253, 33, 33);
+        background-color: red;
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgb(253, 33, 33);
+        background-color: white;
+    }
 }
 
 /* Aside Right Style */
