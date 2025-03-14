@@ -5,6 +5,7 @@ let num_now = 9;
 let score = 0;
 let time = 30;
 let IntervalID;
+var game_condition = false;
 const audioContext = new(window.AudioContext || window.webkitAudioContext)()
 
 // Undisplayed program
@@ -25,6 +26,13 @@ function Random(){
     })
 }
 
+$("#start").one("click", function() {
+    game_condition = true;
+    $(this).css("display","none");
+    time_countdown();
+    document.getElementById("audio_sfx").play();
+})
+
 // Aside Left Function
 // Score Function
 
@@ -35,12 +43,6 @@ const time_paten = 30;
 let isTimeRunning = false;
 
 function Time_count(time){
-    if(isTimeRunning == false){
-        music.pause();
-        alert("Waktu Habis");
-        clearInterval(IntervalID);
-        return;
-    }
     let time_now = (time/30)*100;
     if(time_now > 100){
         time_now = 100;
@@ -53,18 +55,17 @@ function Time_count(time){
 async function time_countdown() {
     if(isTimeRunning) return;
     isTimeRunning = true;
-    while(time > 0){
+    while(time >= 0){
         Time_count(time);
         await new Promise(resolve => setTimeout(resolve, 1000));
         time--;
     }
 
     isTimeRunning = false;
-    console.log("Waktu Habis")
-    Time_count(time);
+    console.log("Waktu Habis");
+    music.pause();
+    alert("Waktu Habis");
 }
-
-time_countdown();
 
 
 // Audio Function
@@ -105,6 +106,7 @@ function Checker(num){
 
 $(".grid").on("click", function() {
     let num = $(this).text();
+    if(!game_condition){return ;}
     if(num == num_now){
         $(this).css("animation","pulse-right 1s linear");
         setTimeout(() => {
