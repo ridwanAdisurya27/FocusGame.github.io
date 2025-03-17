@@ -116,7 +116,9 @@ $(".grid").on("click", function() {
         score += 10;
         $(".score-container p").eq(0).text(score);
         // Timer Settings
-        time++;
+        if(time < 30){
+            time++;
+        }
         Time_count(time);
         if(!isTimeRunning){
             time_countdown();
@@ -138,12 +140,49 @@ $(".grid").on("click", function() {
 // aside right function
 let spin = 0;
 $("#social-btn").on("click", function () {
+    let pos = (spin == 0) ? 0:120;
     if(spin == 0){
-        $("#social-btn").css("animation","roll-up 2s linear")
+        $("#social-btn").css("animation","roll-up 1s linear")
         console.log("roll-up");
+        let id = null;
+        clearInterval(id);
+        id = setInterval(show, 5);
+        function show(){
+            if(pos == 120){
+                clearInterval(id);
+            } else {
+                pos+=4;
+                $(".social-container a").eq(0).css("top",`-${pos}px`);
+                $(".social-container a").eq(1).css("top",`-${pos}px`);
+                $(".social-container a").eq(2).css("top",`-${pos/2}px`);
+                $(".social-container a").eq(3).css("top",`-${pos/2}px`);
+                $(".social-container a").eq(0).css("left",`${pos/4}px`);
+                $(".social-container a").eq(1).css("left",`-${pos/4}px`);
+                $(".social-container a").eq(2).css("left",`${pos/4}px`);
+                $(".social-container a").eq(3).css("left",`-${pos/4}px`);
+            }
+        }
         spin = 1;
     } else {
-        $("#social-btn").css("animation","roll-down 2s linear")
+        $("#social-btn").css("animation","roll-down 1s linear");
+        let id = null;
+        clearInterval(id);
+        id = setInterval(show, 5);
+        function show(){
+            if(pos == 0){
+                clearInterval(id);
+            } else {
+                pos-=4;
+                $(".social-container a").eq(0).css("top",`-${pos}px`);
+                $(".social-container a").eq(1).css("top",`-${pos}px`);
+                $(".social-container a").eq(2).css("top",`-${pos/2}px`);
+                $(".social-container a").eq(3).css("top",`-${pos/2}px`);
+                $(".social-container a").eq(0).css("left",`${pos/4}px`);
+                $(".social-container a").eq(1).css("left",`-${pos/4}px`);
+                $(".social-container a").eq(2).css("left",`${pos/4}px`);
+                $(".social-container a").eq(3).css("left",`-${pos/4}px`);
+            }
+        }
         console.log("roll-down");
         spin = 0;
     }

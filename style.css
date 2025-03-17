@@ -217,11 +217,12 @@ main .game-grid-container {
 
 /* Social Media Style */
 .social-container {
+    position: relative;
     align-self: flex-end;
     justify-self: center;
 }
 
-.social-container img:nth-child(1) {
+.social-container #social-btn {
     width: 50px;
     height: 50px;
 }
@@ -231,7 +232,7 @@ main .game-grid-container {
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(720deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -240,47 +241,34 @@ main .game-grid-container {
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(-720deg);
+        transform: rotate(-360deg);
     }
 }
 
 
-.social-container ul {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.social-container li {
-    list-style: none;
-}
-
-.social-container li a {
-    position: relative;
-    width: 60px;
-    height: 60px;
+.social-container a {
+    position: absolute;
+    z-index: -1;
+    width: 50px;
+    height: 50px;
     display: block;
     text-align: center;
-    margin: 0 10px;
     border-radius: 50%;
-    padding: 6px;
+    padding: 2px;
     box-sizing: border-box;
     text-decoration: none;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     background: linear-gradient(0deg, #ddd, #fff);
     transition: .5s;
+    top: 0px;
 }
 
-.social-container li a:hover {
+.social-container a:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
 
-.social-container li a .fab {
+.social-container a .fab {
     width: 100%;
     height: 100%;
     display: block;
@@ -292,10 +280,6 @@ main .game-grid-container {
     transition: .5s;
 }
 
-ul li:nth-child(1) a:hover .fab {
+a:nth-child(1):hover .fab {
     color: #007bb6;
-}
-
-ul li:nth-child(2) a:hover .fab {
-    color: #e4405f;
 }
