@@ -88,6 +88,52 @@ main {
     gap: 15px;
 }
 
+.pop_ui {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #007bb6;
+    border-radius: 10px;
+    width: 600px;
+    border: white 3px solid;
+    z-index: 3;
+}
+
+#settings_ui, #high_score_ui {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+#settings_ui .background_set {
+    display: flex;
+    gap: 10px;
+}
+
+#settings_ui .btn_control {
+    margin-top: 15px;
+}
+
+#high_score_ui table {
+    background-color: white;
+    text-align: left;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+#high_score_ui table thead {
+    background-color: aqua;
+}
+
+#high_score_ui table tr td, #high_score_ui table tr th {
+    padding: 10px;
+    border: 1px solid;
+}
+
+table #player {
+    background-color: orange;
+}
+
 main #start {
     position: absolute;
     font-size: 45px;

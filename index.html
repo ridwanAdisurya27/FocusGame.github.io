@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/fontawesome.css">
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/regular.css">
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/brands.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
             <!-- Score Section -->
             <div class="score-container">
                 <h2> Score </h2>
-                <p > 0 </p>
+                <p> 0 </p>
             </div>
             <!-- High Score Button -->
             <div class="control-section">
@@ -34,6 +35,44 @@
         <!-- Main Game Section -->
         <main>
             <button id="start"> Play! </button>
+            <div class="pop_ui" id="settings_ui">
+                <div class="background_set">
+                    <p>Change color</p>
+                    <input type="color" name="" id="color_in_set">
+                    <input type="color" name="" id="color_out_set">
+                </div>
+                <div class="btn_control">
+                    <button class="btn"> Apply </button>
+                    <button class="btn cls"> Close </button>
+                </div>
+            </div>
+            <div class="pop_ui" id="high_score_ui">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Asia</th>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Asiap</th>
+                            <td>10</td>
+                        </tr>
+                        <tr id="player">
+                            <th scope="row">Your Name</th>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn_control">
+                    <button class="btn cls"> Close </button>
+                </div>
+            </div>
             <div class="timer-container">
                 <h3> 30 </h3>
                 <span class="outer">
@@ -53,7 +92,7 @@
             </div>
             <audio id="audio_sfx" loop>
                 <source src="./Asset/Sound/videoplayback.mp3">
-                Your Browser didn't Support Video 
+                Your Browser didn't Support Video
             </audio>
         </main>
         <!-- Pointer & Social Media Section -->
@@ -64,7 +103,7 @@
             </div>
             <div class="social-container">
                 <a href=""><i class="fab fa-instagram"></i></a>
-                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href="https://youtube.com/@ridwanadisurya27?si=R6Jf8qvMdNKQjfR6"><i class="fab fa-youtube"></i></a>
                 <a href=""><i class="fab fa-github"></i></a>
                 <a href=""><i class="fab fa-threads"></i></a>
                 <img src="./Asset/Images/My Logo .png" id="social-btn">
