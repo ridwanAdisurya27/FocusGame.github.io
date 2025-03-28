@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/fontawesome.css">
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/regular.css">
     <link rel="stylesheet" href="./Asset/Css/Font-Awesome/fontawesome-free-6.7.2-web/css/brands.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
@@ -19,7 +22,7 @@
     <div class="title">
         <img src="./Asset/Images/Untitled design.png" alt="Focus Game" class="title-image">
     </div>
-    <div class="main-container">
+    <div class="main-container rubik-reguler">
         <aside class="left">
             <!-- Score Section -->
             <div class="score-container">
@@ -34,6 +37,7 @@
         </aside>
         <!-- Main Game Section -->
         <main>
+            <!-- Setiings Pop UP -->
             <button id="start"> Play! </button>
             <div class="pop_ui" id="settings_ui">
                 <div class="background_set">
@@ -46,6 +50,7 @@
                     <button class="btn cls"> Close </button>
                 </div>
             </div>
+            <!-- High Score Pop Up -->
             <div class="pop_ui" id="high_score_ui">
                 <table>
                     <thead>
@@ -73,13 +78,18 @@
                     <button class="btn cls"> Close </button>
                 </div>
             </div>
+            <!-- Hint Pop Up -->
+            <div class="pop_ui" id="hint_ui">
+                <p>Gini cara mainnya</p>
+                <p id="hint"></p>
+            </div>
             <div class="timer-container">
                 <h3> 30 </h3>
                 <span class="outer">
                     <span class="timer"></span>
                 </span>
             </div>
-            <div class="game-grid-container">
+            <div class="game-grid-container rubik-reguler">
                 <div class="grid">1</div>
                 <div class="grid">2</div>
                 <div class="grid">3</div>
@@ -99,13 +109,13 @@
         <aside class="right">
             <div class="score-container">
                 <h2> Pointer </h2>
-                <p> 9 </p>
+                <p> 1 </p>
             </div>
             <div class="social-container">
-                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/ridwan_adisurya27?igsh=cmM1dmQ4dzB4aHRp"><i class="fab fa-instagram"></i></a>
                 <a href="https://youtube.com/@ridwanadisurya27?si=R6Jf8qvMdNKQjfR6"><i class="fab fa-youtube"></i></a>
-                <a href=""><i class="fab fa-github"></i></a>
-                <a href=""><i class="fab fa-threads"></i></a>
+                <a href="https://github.com/ridwanAdisurya27/"><i class="fab fa-github"></i></a>
+                <a href="https://www.threads.net/@ridwan_adisurya27"><i class="fab fa-threads"></i></a>
                 <img src="./Asset/Images/My Logo .png" id="social-btn">
             </div>
         </aside>

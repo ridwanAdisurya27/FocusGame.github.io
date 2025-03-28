@@ -1,9 +1,10 @@
 // Data Station
 const Array_paten = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let array = [];
-let num_now = 9;
+let array = [1,2,3,4,5,6,7,8,9];
+let num_now = 1;
 let score = 0;
 let time;
+let tolol = 0;
 let IntervalID;
 var game_condition = false;
 const audioContext = new(window.AudioContext || window.webkitAudioContext)()
@@ -14,7 +15,6 @@ function Random() {
     while (array.length > 0) {
         array.pop();
     }
-    console.log("array kosong " + array);
     while (array.length <= 8) {
         let rand = Array_paten[Math.floor(Math.random() * Array_paten.length)];
         if (array.includes(rand) == false) {
@@ -38,7 +38,70 @@ $("#start").on("click", function () {
 })
 
 // Aside Left Function
-// Score Function
+
+// Settings Function
+$("#settings").on("click", function () {
+    $("#settings_ui").css("display", "flex");
+    game_condition = false;
+})
+
+function sortTable() {
+    var rows = $("#high_score_ui table tbody tr").get();
+    var switching, shouldSwitch, x, i, y, rows;
+    switching = true;
+
+    while (switching) {
+        switching = false;
+        for (i = 0; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = $("#high_score_ui table tbody tr").eq(i).children("td").text();
+            y = $("#high_score_ui table tbody tr").eq(i + 1).children("td").text();
+            console.log("bandingkan" + x + " dengan " + y);
+            if (Number(x) < Number(y)) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+}
+
+$("#highscore").on("click", function () {
+    $("#high_score_ui").css("display", "flex");
+    sortTable(1);
+    game_condition = false;
+})
+
+$(".cls").on("click", function () {
+    $(this).closest(".pop_ui").css("display", "none");
+    game_condition = true;
+})
+
+$("#settings_ui .btn_control button").eq(0).on("click", function () {
+    let color_in = $("#color_in_set").val();
+    let color_out = $("#color_out_set").val();
+    $("body").css("background", `radial-gradient(${color_in},${color_out})`);
+})
+
+function Hint(index) {
+    let text_hint = "";
+    for(i = 0; i < 9; i++){
+        let x = num_now + i;
+        if(x <= 9){
+            text_hint = text_hint + x.toString() + " -> ";
+        } else {
+            let y = x - 9;
+            text_hint = text_hint + y.toString() + " -> "; 
+        }
+    }
+    if(index == 10){
+        $("#hint_ui").css("display","block");
+        $("#hint").text(text_hint);
+    }
+}
 
 // Main Function
 // time Function
@@ -53,7 +116,6 @@ function Time_count(time) {
     }
     $(".timer").css("width", `${time_now}%`);
     $(".timer-container h3").eq(0).text(time);
-    console.log("waktu tinggal : " + time);
 }
 
 async function time_countdown() {
@@ -64,7 +126,9 @@ async function time_countdown() {
         await new Promise(resolve => setTimeout(resolve, 1000));
         if (game_condition == true) {
             time--;
+            tolol++;
         }
+        Hint(tolol);
     }
 
     isTimeRunning = false;
@@ -95,6 +159,7 @@ let grid_left = 9;
 
 function Checker(num) {
     grid_left--;
+    $("#player td").text(score);
     if (grid_left == 0) {
         score += 20
         $(".score-container p").eq(0).text(score);
@@ -103,6 +168,7 @@ function Checker(num) {
         $(".score-container p").eq(1).text(rand);
         num_now = rand;
         grid_left = 9;
+        $("#hint_ui").css("display","none");
         return;
     }
     if (num > 9) {
@@ -125,6 +191,7 @@ $(".grid").on("click", function () {
         }, 1000)
         $(this).text("");
         score += 10;
+        $("#player td").text(score);
         $(".score-container p").eq(0).text(score);
         // Timer Settings
         if (time < 30) {
@@ -138,6 +205,8 @@ $(".grid").on("click", function () {
         playAudio("./Asset/Sound/ding-sound-effect_1.mp3");
         // Change arrow settings
         Checker(num_now + 1);
+        // hint Reset
+        tolol = 0;
     } else {
         $(this).css("animation", "pulse-false 1s linear");
         setTimeout(() => {
@@ -209,52 +278,3 @@ $("#social-btn").on("click", function () {
     }
 })
 
-// Settings Function
-$("#settings").on("click", function () {
-    $("#settings_ui").css("display", "flex");
-    game_condition = false;
-})
-
-function sortTable() {
-    var rows = $("#high_score_ui table tbody tr").get();
-    var switching, shouldSwitch, x, i, y, rows;
-    switching = true;
-
-    while (switching) {
-        switching = false;
-        for (i = 0; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = $("#high_score_ui table tbody tr").eq(i).children("td").text();
-            y = $("#high_score_ui table tbody tr").eq(i + 1).children("td").text();
-
-            if (Number(x) < Number(y)) {
-                shouldSwitch = true;
-                break;
-            }
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-        }
-    }
-}
-
-$("#highscore").on("click", function () {
-    $("#high_score_ui").css("display", "flex");
-    sortTable(1);
-    $("#player td").text(score);
-    game_condition = false;
-})
-
-$(".cls").on("click", function () {
-    $(this).closest(".pop_ui").css("display", "none");
-    console.log("alamak");
-    game_condition = true;
-})
-
-$("#settings_ui .btn_control button").eq(0).on("click", function () {
-    let color_in = $("#color_in_set").val();
-    let color_out = $("#color_out_set").val();
-    $("body").css("background", `radial-gradient(${color_in},${color_out})`);
-    console.log(color_in);
-})
